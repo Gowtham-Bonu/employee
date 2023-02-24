@@ -1,0 +1,259 @@
+<p class="context" >Employees having age between 20 and 40</p>
+<table class="table table-striped">
+  <tr>
+    <th>employee</th>
+    <th>age</th>
+  </tr>
+  <% @employees_age.each do |employee| %>
+    <tr>
+      <td><%= employee.first_name %></td>
+      <td><%= employee.age %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p class="context">Employees who are available for full time</p>
+<table class="table table-striped">
+  <tr>
+    <th>employee</th>
+    <th>full time avialability</th>
+  </tr>
+  <% @employees_true.each do |employee| %>
+    <tr>
+      <td><%= employee.first_name %></td>
+      <td><%= employee.full_time_available %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p class="context">Employees who's age is greater than 25 and orders are 5</p>
+<table class="table table-striped">
+  <tr>
+    <th>employee</th>
+    <th>no_of_order</th>
+    <th>age</th>
+  </tr>
+  <% @employees_orders.each do |employee| %>
+    <tr>
+      <td><%= employee.first_name %></td>
+      <td><%= employee.no_of_order %></td>
+      <td><%= employee.age %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p class="context">Employees who are created before today</p>
+<table class="table table-striped">
+  <tr>
+    <th>employee</th>
+    <th>created time and date</th>
+  </tr>
+  <% @employees_past.each do |employee| %>
+    <tr>
+      <td><%= employee.first_name %></td>
+      <td><%= employee.created_at %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p class="context">Employees who's age is less than 25 or no_of_orders are 5</p>
+<table class="table table-striped">
+  <tr>
+  <th>employee</th>
+    <th>no_of_order</th>
+    <th>age</th>
+  </tr>
+  <% @employees_less_orders.each do |employee| %>
+    <tr>
+      <td><%= employee.first_name %></td>
+      <td><%= employee.no_of_order %></td>
+      <td><%= employee.age %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p class="context">Employees age in descending order</p>
+<table class="table table-striped">
+  <tr>
+    <th>employee</th>
+    <th>age</th>
+  </tr>
+  <% @employees_desc.each do |employee| %>
+    <tr>
+      <td><%= employee.first_name %></td>
+      <td><%= employee.age %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p class="context">Employees no_of_orders in ascending order</p>
+<table class="table table-striped">
+  <tr>
+    <th>employee</th>
+    <th>no_of_orders</th>
+  </tr>
+  <% @employees_asc.each do |employee| %>
+    <tr>
+      <td><%= employee.first_name %></td>
+      <td><%= employee.no_of_order %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p class="context">Employees whose salary is greater than 45k</p>
+<table class="table table-striped">
+  <tr>
+    <th>employee</th>
+    <th>salary</th>
+  </tr>
+  <% @employees_high.each do |employee| %>
+    <tr>
+      <td><%= employee.first_name %></td>
+      <td><%= employee.salary %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p class="context">Employees group whose orders count is greater than 5</p>
+<table class="table table-striped">
+  <tr>
+    <th>employee</th>
+    <th>no_of_order</th>
+  </tr>
+  <% @employees_group.each do |employee| %>
+    <tr>
+      <td><%= employee.first_name %></td>
+      <td><%= employee.no_of_order %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p class="context">Employees before using unscope</p>
+<table class="table table-striped">
+  <tr>
+    <th>employee</th>
+    <th>age</th>
+  </tr>
+  <% @employees_unscope_false.each do |employee| %>
+    <tr>
+      <td><%= employee.first_name %></td>
+      <td><%= employee.age %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p class="context">Employees after using unscope</p>
+<table class="table table-striped">
+  <tr>
+    <th>employee</th>
+    <th>age</th>
+  </tr>
+  <% @employees_unscope_true.each do |employee| %>
+    <tr>
+      <td><%= employee.first_name %></td>
+      <td><%= employee.age %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p class="context">Employees before using only</p>
+<table class="table table-striped">
+  <tr>
+    <th>employee</th>
+  </tr>
+  <% @employees_only_false.each do |employee| %>
+    <tr>
+      <td><%= employee.first_name %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p class="context">Employees after using only</p>
+<table>
+  <tr class="table table-striped">
+    <th>employee</th>
+  </tr>
+  <% @employees_only_true.each do |employee| %>
+    <tr>
+      <td><%= employee.first_name %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p class="context">Employees before using reselect</p>
+<table class="table table-striped">
+  <tr>
+    <th>employee</th>
+    <th>age</th>
+    <th>salary</th>
+  </tr>
+  <% @employees_reselect_false.each do |employee| %>
+    <tr>
+      <td><%= employee.first_name %></td>
+      <td><%= employee.age %></td>
+      <td><%= employee.salary %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p class="context">Employees after using reselect</p>
+<table class="table table-striped">
+  <tr>
+    <th>employee</th>
+    <th>created_at</th>
+  </tr>
+  <% @employees_reselect_true.each do |employee| %>
+    <tr>
+      <td><%= employee.first_name %></td>
+      <td><%= employee.created_at %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p class="context">Employees before using reorder</p>
+<table class="table table-striped">
+  <tr>
+    <th>employee</th>
+  </tr>
+  <% @employees_reorder_false.each do |employee| %>
+    <tr>
+      <td><%= employee.first_name %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p class="context">Employees after using reorder</p>
+<table class="table table-striped">
+  <tr>
+    <th>employee</th>
+  </tr>
+  <% @employees_reorder_true.each do |employee| %>
+    <tr>
+      <td><%= employee.first_name %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p class="context">Employees before using reverse_order</p>
+<table class="table table-striped">
+  <tr>
+    <th>employee</th>
+  </tr>
+  <% @employees_reverse_order_false.each do |employee| %>
+    <tr>
+      <td><%= employee.first_name %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p class="context">Employees before using reverse_order</p>
+<table class="table table-striped">
+  <tr>
+    <th>employee</th>
+  </tr>
+  <% @employees_reverse_order_true.each do |employee| %>
+    <tr>
+      <td><%= employee.first_name %></td>
+    </tr>
+  <% end %>
+</table>

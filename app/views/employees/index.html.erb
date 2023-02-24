@@ -1,0 +1,42 @@
+<div class="container" >
+  <h1>Here you Can Find Our Employees</h1>
+  <div class="form" >
+    <%= form_with url: employees_path, method: :get do |form| %>
+      <%= form.label :email_entered, "Search by email:", {class: "form-label"} %>
+      <%= form.text_field :email_entered, {class: "form-control", placeholder: "enter email"} %>
+      <%= form.submit "Search", {class: " bg-primary s_button btn btn-primary"} %>
+    <% end %>
+  </div>
+  <p class="s_result" ><%= @str %></p>
+  <%= link_to "Search your results", results_path, {class: "result"} %>
+  <div class="order" >
+    <p>Increment/Decrement the orders of first 10 employees:</p>
+    <button class="btn btn-dark"><%= link_to "increment ", increment_path %></button>
+    <button class=" btn btn-light"><%= link_to "decrement", decrement_path %></button>
+    <p><%= @str2 %></p>
+  </div>
+  <%= link_to "create a new employee", new_employee_path, { class: "result" } %>
+  <table class="table table-dark table-striped">
+    <tr>
+      <th>employee</th>
+      <th>email</th>
+      <th>age</th>
+      <th>no_of_order</th>
+      <th>full_time_avilable</th>
+      <th>salary</th>
+      <th colspan = "2" >actions</th>
+    </tr>
+    <% @employees.each do |employee| %>
+      <tr>
+        <td><%= employee.first_name %></td>
+        <td><%= employee.email %></td>
+        <td><%= employee.age %></td>
+        <td><%= employee.no_of_order %></td>
+        <td><%= employee.full_time_available %></td>
+        <td><%= employee.salary %></td>
+        <td><button class=" btn btn-light"><%= link_to "edit", edit_employee_path(employee) %></button></td>
+        <td><button class="delete  btn btn-light"><%= link_to "Destroy", employee_path(employee), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></button></td>
+      </tr>
+    <% end %>
+  </table>
+</div>

@@ -1,0 +1,58 @@
+<%= form_with model: employee do |form| %>
+<div class="card container" >
+  <div class="card-body" >
+     <div class="mb-3" >
+        <%= form.label :first_name, {class: "form-label"} %><br>
+        <%= form.text_field :first_name, {class: "form-control", placeholder: "First Name"}  %>
+        <% employee.errors.full_messages_for(:first_name).each do |message| %>
+          <div><%= message %></div>
+        <% end %>
+     </div>
+     <div class="mb-3" >
+        <%= form.label :last_name, {class: "form-label"} %><br>
+        <%= form.text_field :last_name, {class: "form-control", placeholder: "Last Name"}  %>
+        <% employee.errors.full_messages_for(:last_name).each do |message| %>
+          <div><%= message %></div>
+        <% end %>
+     </div>
+      <div class="mb-3" >
+         <%= form.label :email, {class: "form-label"} %><br>
+         <%= form.email_field :email, {class: "form-control", placeholder: "email "}  %>
+         <% employee.errors.full_messages_for(:email).each do |message| %>
+         <div><%= message %></div>
+         <% end %>
+      </div>
+      <div class="mb-3" >
+        <%= form.label :age, {class: "form-label"} %><br>
+        <%= form.number_field :age, {class: "form-control", placeholder: "age"}  %>
+        <% employee.errors.full_messages_for(:last_name).each do |message| %>
+          <div><%= message %></div>
+        <% end %>
+     </div>
+     <div class="mb-3" >
+        <%= form.label :no_of_order, {class: "form-label"} %><br>
+        <%= form.number_field :no_of_order, {class: "form-control", placeholder: "orders count"}  %>
+        <% employee.errors.full_messages_for(:last_name).each do |message| %>
+          <div><%= message %></div>
+        <% end %>
+     </div>
+     <div class="mb-3" >
+        <%= form.label :full_time_available, {class: "form-label"} %><br>
+        <%= form.text_field :full_time_available, {class: "form-control", placeholder: "true/false"}  %>
+        <% employee.errors.full_messages_for(:last_name).each do |message| %>
+          <div><%= message %></div>
+        <% end %>
+     </div>
+     <div class="mb-3" >
+        <%= form.label :salary, {class: "form-label"} %><br>
+        <%= form.number_field :salary, {class: "form-control", placeholder: "salary"}  %>
+        <% employee.errors.full_messages_for(:last_name).each do |message| %>
+          <div><%= message %></div>
+        <% end %>
+     </div>
+      <div>
+         <%= form.submit %>
+      </div>
+   </div>
+</div>
+<% end %>
