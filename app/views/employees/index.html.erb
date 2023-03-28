@@ -5,6 +5,7 @@
       <%= form.label :email_entered, "Search by email:", {class: "form-label"} %>
       <%= form.text_field :email_entered, {class: "form-control", placeholder: "enter email"} %>
       <%= form.submit "Search", {class: " bg-primary s_button btn btn-primary"} %>
+      <%= form.submit "Reset", {class: " bg-primary s_button btn btn-primary"} %>
     <% end %>
   </div>
   <p class="s_result" ><%= @str %></p>
@@ -26,7 +27,8 @@
       <th>salary</th>
       <th colspan = "2" >actions</th>
     </tr>
-    <% @employees.each do |employee| %>
+    <% if @employees %>
+      <% @employees.each do |employee| %>
       <tr>
         <td><%= employee.first_name %></td>
         <td><%= employee.email %></td>
@@ -37,6 +39,22 @@
         <td><button class=" btn btn-light"><%= link_to "edit", edit_employee_path(employee) %></button></td>
         <td><button class="delete  btn btn-light"><%= link_to "Destroy", employee_path(employee), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></button></td>
       </tr>
+    <% end %>
+    <% else %>
+      <% if @employee %>
+        <tr>
+          <td><%= @employee.first_name %></td>
+          <td><%= @employee.email %></td>
+          <td><%= @employee.age %></td>
+          <td><%= @employee.no_of_order %></td>
+          <td><%= @employee.full_time_available %></td>
+          <td><%= @employee.salary %></td>
+          <td><button class=" btn btn-light"><%= link_to "edit", edit_employee_path(@employee) %></button></td>
+          <td><button class="delete  btn btn-light"><%= link_to "Destroy", employee_path(@employee), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></button></td>
+        </tr>
+      <% else %>
+        <p>No record found</p>
+      <% end %>
     <% end %>
   </table>
 </div>
