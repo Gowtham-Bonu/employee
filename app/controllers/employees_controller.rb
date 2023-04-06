@@ -1,16 +1,5 @@
 class EmployeesController < ApplicationController
-  def new
-    @employee = Employee.new
-  end
-
-  def create
-    @employee = Employee.find_or_create_by(employee_params)
-    if @employee
-      redirect_to root_path
-    else
-      render :new, status: :unprocessable_entity
-    end
-  end
+  before_action :find_employee, only: [:edit, :update, :destroy]
 
   def index
     if params[:email_entered] and params[:commit] == "Search"
@@ -20,17 +9,34 @@ class EmployeesController < ApplicationController
     end
   end
 
-  def edit
-    @employee = Employee.find_or_initialize_by(id: params[:id])
+  def new
+    @employee = Employee.new
   end
 
-  def update
-    @employee = Employee.find_or_initialize_by(id: params[:id])
+  def create
+    @employee = Employee.find_or_create_by(employee_params)
+    if @employee
+      redirect_to root_path, notice: "you have successfully created an employee"
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
 
+  def edit; end
+
+  def update
     if @employee.update(employee_params)
-      redirect_to root_path
+      redirect_to root_path, notice: "you have successfully updated the employee"
     else
       render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    if @employee.destroy
+      redirect_to root_path, status: :see_other, notice: "you have successfully deleted the employee"
+    else
+      redirect_to root_path, status: :unprocessable_entity, alert: "The action didn't work.."
     end
   end
 
@@ -52,13 +58,6 @@ class EmployeesController < ApplicationController
       end
     end
     redirect_to employees_path
-  end
-
-  def destroy
-    @employee = Employee.find_or_initialize_by(id: params[:id])
-    @employee.destroy
-
-    redirect_to root_path, status: :see_other
   end
 
   def results
@@ -84,6 +83,10 @@ class EmployeesController < ApplicationController
   end
 
   private
+
+  def find_employee
+    @employee = Employee.find_or_initialize_by(id: params[:id])
+  end
 
   def employee_params
     params.require(:employee).permit(:first_name, :last_name, :email, :age, :no_of_order, :full_time_available, :salary)

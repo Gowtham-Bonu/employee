@@ -9,11 +9,11 @@
     <% end %>
   </div>
   <p class="s_result" ><%= @str %></p>
-  <%= link_to "Search your results", results_path, {class: "result"} %>
+  <%= link_to "Search your results", results_employees_path, {class: "result"} %>
   <div class="order" >
     <p>Increment/Decrement the orders of first 10 employees:</p>
-    <button class="btn btn-dark"><%= link_to "increment ", increment_path %></button>
-    <button class=" btn btn-light"><%= link_to "decrement", decrement_path %></button>
+    <button class="btn btn-dark"><%= link_to "increment ", increment_employees_path %></button>
+    <button class=" btn btn-light"><%= link_to "decrement", decrement_employees_path %></button>
     <p><%= @str2 %></p>
   </div>
   <%= link_to "create a new employee", new_employee_path, { class: "result" } %>
