@@ -3,10 +3,12 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "employees#index"
-
-  get "/increment" => "employees#increment"
-  get "/decrement" => "employees#decrement"
-  get "/results" => "employees#results"
   
-  resources :employees
+  resources :employees do
+    collection do
+      get "increment"
+      get "decrement"
+      get "results"
+    end
+  end
 end
